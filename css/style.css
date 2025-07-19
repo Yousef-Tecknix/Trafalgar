@@ -1,0 +1,760 @@
+/* 🎨 Global Design Variables */
+:root {
+  --primary-blue: #458FF6;
+  /* Main brand color */
+  --text-dark: #1F1534;
+  /* Dark text */
+  --text-light: #7D7987;
+  /* Light/secondary text */
+  --white: #FFFFFF;
+  /* White color */
+  --black: #000000;
+  /* Black color */
+
+  /* 📏 Layout Spacing */
+  --section-margin: 190px;
+  /* Vertical margin between sections */
+  --section-padding: 70px;
+  /* Section inner padding */
+
+  /* 🔠 Font Sizes */
+  --fs-xl: 36px;
+  /* Extra large (titles) */
+  --fs-lg: 24px;
+  /* Large */
+  --fs-md: 18px;
+  /* Medium (body) */
+  --fs-base: 16px;
+  /* Base size (default) */
+}
+
+/* 🔄 Global Reset for Consistency */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* Includes padding and border in element's size */
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Enables smooth scrolling for anchor links */
+  font-size: 16px;
+  /* Base font size (for rem calculation) */
+}
+
+body {
+  font-family: "Mulish", sans-serif;
+  /* Clean modern font for UI */
+}
+
+ul {
+  list-style-type: none;
+  /* Remove default list bullets */
+}
+
+a {
+  text-decoration: none;
+  /* Remove underline from links */
+  color: var(--text-color);
+  /* Use theme text color (if defined) */
+}
+
+input,
+textarea,
+button {
+  outline: none;
+  /* Remove focus outline */
+  border: none;
+  /* Remove default borders */
+}
+
+img {
+  max-width: 100%;
+  /* Responsive images */
+}
+
+/* 🧩 Shared UI Components */
+
+/* Section main heading */
+.section-title {
+  font-size: var(--fs-xl);
+  color: var(--black);
+  position: relative;
+}
+
+/* Decorative underline under section title */
+.section-title::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -26px;
+  transform: translateX(-50%);
+  height: 2px;
+  width: 56px;
+  background-color: var(--black);
+}
+
+/* Section text description */
+.section-description {
+  margin: 30px 0;
+  color: var(--text-light);
+  font-size: var(--fs-md);
+  line-height: 30px;
+  margin-top: 61px;
+  margin-bottom: 37px;
+}
+
+/* Wrapper for grouped content (title + description + button, etc.) */
+.content-block {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Title inside a content block */
+.content-block-title {
+  font-size: var(--fs-xl);
+  color: var(--black);
+}
+
+/* Description inside a content block */
+.content-block-description {
+  font-size: var(--fs-base);
+  color: var(--text-light);
+  font-weight: lighter;
+  margin: 65px 0 40px 0;
+  line-height: 28px;
+}
+
+/* Primary CTA (Call to Action) button style */
+.link-primary {
+  color: var(--primary-blue);
+  font-size: var(--fs-md);
+  background-color: transparent;
+  border: 1px solid var(--primary-blue);
+  width: 200px;
+  height: 56px;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =====================================================
+  📌 Header Styles (Top navigation bar)
+===================================================== */
+
+.site-header {
+  padding-top: 56px;
+  /* Space above header */
+}
+
+/* 🔗 Brand Logo: icon + text */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  /* Space between icon and text */
+}
+
+.logo span {
+  display: block;
+  transform: translateX(1px);
+  /* Slight alignment adjustment */
+}
+
+/* 🔵 Circular icon inside the logo */
+.logo .logo-cricle {
+  width: 41px;
+  height: 41px;
+  font-size: 26px;
+  background-color: var(--primary-blue);
+  font-weight: 600;
+  color: var(--white);
+  border-radius: 50%;
+  /* Make it a perfect circle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 📝 Brand name next to the logo icon */
+.logo .logo-text {
+  font-family: 'Mulish', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--text-dark);
+}
+
+/* 🔧 Header layout container: logo + links */
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* 🔗 Horizontal navigation links */
+.site-header .container .links {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  /* Spacing between links */
+}
+
+/* 🌐 Style for each link inside the header */
+.site-header .container .links li a {
+  font-size: var(--fs-md);
+  color: var(--text-light);
+}
+
+/* ✅ Highlighted/active navigation link */
+.site-header .container .links .active {
+  font-weight: bold;
+  color: var(--text-dark);
+}
+
+
+/* =====================================================
+  🦸 HERO SECTION (Top banner with headline and image)
+===================================================== */
+
+.hero-section {
+  margin-top: 84px;
+  /* Space from top of page */
+  margin-bottom: 195px;
+  /* Space below hero section */
+  position: relative;
+  /* Needed for absolute background */
+}
+
+/* 📦 Layout container: text on left, image on right */
+.hero-section .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 109px;
+  /* Gap between text and image */
+}
+
+/* 🎨 Decorative background dots behind hero section */
+.hero-section .bg-dots {
+  position: absolute;
+  top: 0;
+  left: -49px;
+  z-index: -1;
+  /* Place behind content */
+}
+
+/* 📝 Text block inside hero section */
+.hero-section .hero-text {
+  max-width: 445px;
+  /* Limit text width for readability */
+}
+
+/* 📢 Main headline in hero section */
+.hero-section .hero-text .hero-title {
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+/* 🧾 Hero section description paragraph */
+.hero-section .hero-text .hero-description {
+  margin-top: 24px;
+  margin-bottom: 45px;
+  font-size: 21px;
+  line-height: 32px;
+  font-weight: 300;
+  color: var(--text-light);
+}
+
+/* 🔘 Call-to-action button */
+.hero-section .hero-text .link-primary {
+  background-color: var(--primary-blue);
+  color: var(--white);
+}
+
+/* 🖼️ Right-side image in hero section */
+.hero-section .hero-image {
+  max-width: 693px;
+  /* Keep image within layout bounds */
+}
+
+/* =====================================================
+  🧩 SERVICES SECTION (List of offered services)
+===================================================== */
+
+.services-section {
+  overflow: hidden;
+  /* Hide any overflowing decorative elements */
+}
+
+/* 🎨 Decorative background dots on the right */
+.services-section .bg-dots {
+  position: absolute;
+  z-index: -1;
+  /* Push behind all elements */
+  right: -50px;
+  top: 50%;
+  transform: translateY(calc(-50% - 19px));
+}
+
+/* 📦 Container padding inside section */
+.services-section .container {
+  padding: 0 50px;
+}
+
+/* 🧭 Section title centered */
+.services-section .section-title {
+  text-align: center;
+}
+
+/* 📄 Section description centered and limited in width */
+.services-section .section-description {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 952px;
+  margin-bottom: 80px;
+}
+
+/* 🧱 Responsive grid layout for service cards */
+.services-section .services-grid {
+  display: grid;
+  gap: 43px;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  position: relative;
+  z-index: 1;
+  /* Ensure it's above background SVG */
+}
+
+/* 📦 Individual service card */
+.services-section .services-grid .service-card {
+  background-color: var(--white);
+  box-shadow: 0px 4px 5px 1px rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
+  padding: 54px 37px;
+}
+
+/* 🏷️ Service title */
+.services-section .services-grid .service-card h3 {
+  color: var(--black);
+  font-size: 24px;
+  margin: 27px 0;
+}
+
+/* 📃 Service description text */
+.services-section .services-grid .service-card p {
+  font-size: var(--fs-base);
+  color: var(--text-light);
+  line-height: 28px;
+}
+
+/* 🖼️ Large background SVG behind the grid */
+.services-section .background-svg {
+  position: absolute;
+  top: -46px;
+  left: -42%;
+  width: 100%;
+  z-index: -1;
+}
+
+/* 🔘 Centered "Learn More" link at bottom */
+.services-section .link-primary {
+  margin: 70px auto 0;
+}
+
+/* =====================================================
+  🩺 PROVIDERS SECTION & 📱 APP SECTION
+===================================================== */
+
+/* 🧍‍♂️ Providers section spacing and position */
+.providers-section {
+  margin-top: 200px;
+  margin-bottom: 200px;
+  position: relative;
+  /* Allows positioning background or decorative elements */
+}
+
+/* 📲 App section spacing */
+.app-section {
+  margin-bottom: 200px;
+}
+
+/* 🧱 Shared layout: container with horizontal flex layout */
+.providers-section .container,
+.app-section .container {
+  display: flex;
+  align-items: center;
+  gap: 137px;
+  /* Space between image and text */
+}
+
+/* 🎯 Align section title underline to the left (not centered) */
+.providers-section .profide-text .section-title::after,
+.app-section .app-text .section-title::after {
+  left: 0;
+  transform: translateX(0);
+}
+
+/* 📝 Text content area: flexible width with minimum base */
+.providers-section .profide-text,
+.app-section .container .app-text {
+  flex: 1 1 400px;
+}
+
+
+/* =====================================================
+  💬 Testimonial Section
+===================================================== */
+
+/* 🎯 Center-aligned white section title with spacing */
+.testimonial-section .section-title {
+  text-align: center;
+  color: var(--white);
+  margin-bottom: 88px;
+}
+
+/* 🧵 Title underline styled in white to match background */
+.testimonial-section .section-title::after {
+  background-color: var(--white);
+}
+
+/* 💡 Prevent content from overflowing */
+.testimonial-section {
+  overflow: hidden;
+}
+
+/* 🎨 Container with gradient background and rounded corners */
+.testimonial-section .container {
+  background: linear-gradient(212deg, #67C3F3 0%, #5A98F2 110.18%);
+  border-radius: 24px;
+  color: var(--white) !important;
+  padding: 76px 115px;
+  margin-bottom: 42px;
+  position: relative;
+}
+
+/* 🟣 Decorative background dots positioned behind content */
+.testimonial-section .bg-dots {
+  position: absolute;
+  left: -52px;
+  bottom: 33px;
+  z-index: -1;
+}
+
+/* 👤 Circular author image container with white border */
+.testimonial-section .testimonial-author .auther-image {
+  width: 133px;
+  height: 133px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid var(--white);
+  overflow: hidden;
+}
+
+/* 📸 Scale and shift image for better framing inside circle */
+.testimonial-section .testimonial-author .auther-image img {
+  transform: scale(2.5) translate(8px, 10px);
+}
+
+/* 📐 Two-column layout for author info and testimonial quote */
+.testimonial-section .testimonial-content {
+  display: flex;
+  align-items: center;
+}
+
+/* 🔀 Each column takes 50% of the width */
+.testimonial-section .testimonial-content > div {
+  flex: 1 1 50%;
+}
+
+/* 👥 Author information block with spacing between image and text */
+.testimonial-section .testimonial-content .testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+/* 📝 Author name: bold and slightly larger */
+.testimonial-section .testimonial-content .testimonial-author .author-name {
+  font-weight: bold;
+  font-size: 22px;
+  margin-bottom: 7px;
+}
+
+/* 💼 Author role: lighter weight with standard font size */
+.testimonial-section .testimonial-content .testimonial-author .author-role {
+  font-size: var(--fs-md);
+  font-weight: 200;
+}
+
+/* 💬 Testimonial text style: white, soft, and easy to read */
+.testimonial-section .testimonial-content .testimonial-quote {
+  color: var(--white);
+  font-size: var(--fs-md);
+  line-height: 30px;
+  font-weight: 300;
+}
+
+/* =====================================================
+  ⏺ Pagination Controls
+===================================================== */
+
+/* 📍 Center pagination arrows and dots */
+.testimonial-section .pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 85px;
+  margin-bottom: 100px;
+}
+
+/* 🔁 Arrow button container with pointer interaction */
+.testimonial-section .pagination .pagination-arrow {
+  cursor: pointer;
+  height: 30px;
+  width: 40px;
+  background-color: transparent;
+}
+
+/* 🔵 Highlight next arrow with primary color */
+.testimonial-section .pagination .pagination-arrow.pagination-arrow-next {
+  color: var(--primary-blue);
+}
+
+/* 🖼 Resize SVG icons to fill button container */
+.testimonial-section .pagination button svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ⚪ Dots container with spacing between each dot */
+.testimonial-section .pagination .pagination-dots {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+/* 🔘 Default pagination dot style */
+.testimonial-section .pagination .pagination-dots .dot {
+  height: 10px;
+  width: 10px;
+  background-color: #3287ff59;
+  border-radius: 50%;
+}
+
+/* 🔵 Active dot uses solid primary color */
+.testimonial-section .pagination .pagination-dots .dot-active {
+  background-color: var(--primary-blue);
+}
+
+/* =====================================================
+  📝 Blog Section
+===================================================== */
+
+/* 🚫 Hide overflow to contain floated or positioned elements */
+.blog-section {
+  overflow: hidden;
+}
+
+/* 📐 Ensure relative positioning for absolute children (like background SVGs) */
+.blog-section .container {
+  position: relative;
+}
+
+/* 🎯 Center-aligned title with bottom spacing */
+.blog-section .section-title {
+  text-align: center;
+  margin-bottom: 107px;
+}
+
+/* 🧱 Responsive grid layout for blog cards */
+.blog-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 34px;
+}
+
+/* 🧾 Blog card container with rounded corners and soft shadow */
+.card {
+  border-radius: 20px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+/* 🖼 Make card image fill full width */
+.card img {
+  width: 100%;
+}
+
+/* 📄 Inner content area with padding and background */
+.card-body {
+  background-color: var(--white);
+  z-index: 1;
+  padding: 32px;
+}
+
+/* 🧩 Card title: bold, readable heading */
+.card-title {
+  font-size: 21px;
+  font-weight: bold;
+  line-height: 32px;
+}
+
+/* ✍️ Card description: light text with readable spacing */
+.card-desc {
+  font-size: var(--fs-base);
+  color: var(--text-light);
+  margin: 13px 0;
+  line-height: 28px;
+}
+
+/* 🔗 Read more link styled with icon and spacing */
+.card-body .card-link {
+  color: var(--primary-blue);
+  font-size: var(--fs-md);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+/* ⚙️ Ensure icon or arrow inside link is vertically aligned */
+.card-body .card-link span {
+  line-height: 28px;
+}
+
+/* 🔗 CTA link below blog cards, centered with margin */
+.blog-section .container > .link-primary {
+  margin: 79px auto 200px;
+}
+
+/* =====================================================
+  🌐 Background Elements
+===================================================== */
+
+/* 🌀 Decorative background SVG behind content */
+.blog-section .background-svg {
+  width: 100%;
+  position: absolute;
+  top: -60px;
+  right: -56%;
+  z-index: -1;
+  transform: rotate(180deg);
+  min-height: 557px;
+}
+
+/* 🟣 Dotted background positioned in top-left corner */
+.blog-section .bg-dots {
+  left: -32px;
+  top: -43px;
+  position: absolute;
+  z-index: -1;
+}
+
+/* =====================================================
+  🦶 Footer
+===================================================== */
+
+/* 🎨 Footer background with gradient and white text */
+.footer {
+  background: linear-gradient(180deg, #67C3F3 0%, #5A98F2 100%);
+  color: #ffffff;
+  padding: 112px 18px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 💼 Footer branding: logo and company name */
+.footer-brand .logo .logo-text {
+  color: var(--white);
+}
+
+/* 📍 Footer logo container with spacing */
+.footer-brand .logo {
+  margin-bottom: 21px;
+}
+
+/* ⭕ Logo circle with white background and blue text */
+.footer-brand .logo-cricle {
+  background-color: var(--white);
+  color: var(--primary-blue);
+}
+
+/* 🧾 Description and copyright styling */
+.footer-brand :where(.footer-desc, .footer-copy) {
+  font-weight: 300;
+  font-size: var(--fs-md);
+  line-height: 28px;
+  font-weight: 200;
+}
+
+/* 📜 Description spacing */
+.footer-desc {
+  margin-bottom: 36px;
+}
+
+/* 🔗 Footer link groups layout with large spacing */
+.footer-links {
+  display: flex;
+  gap: 150px;
+}
+
+/* 📏 Limit width of the first column (usually branding or info) */
+.footer-links > div:first-child {
+  width: clamp(0px, 100%, 380px);
+}
+
+/* 📚 Layout of second column (multiple link lists) */
+.footer-links > div:last-child {
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+}
+
+/* 📄 Individual footer link list (vertical layout) */
+.footer .links {
+  display: flex;
+  flex-direction: column;
+  gap: 21px;
+}
+
+/* 🏷 Section title for each footer link group */
+.footer-links .footer-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 35px;
+}
+
+/* 🔗 Footer anchor styling */
+.footer-links a {
+  font-size: var(--fs-md);
+  font-weight: 200;
+}
+
+/* =====================================================
+  🟣 Footer Background Dots
+===================================================== */
+
+/* 🌀 Common position for decorative dot backgrounds */
+.footer :where(.bg-dots) {
+  position: absolute;
+}
+
+/* ☁️ Top-right dots */
+.bg-dots.top {
+  top: -15px;
+  right: -22px;
+}
+
+/* 🌑 Bottom-left dots */
+.bg-dots.bottom {
+  bottom: -17px;
+  left: -23px;
+}
